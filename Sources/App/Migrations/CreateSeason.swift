@@ -3,7 +3,6 @@ import Fluent
 struct CreateSeason: Migration {
     
     func prepare(on database: Database) -> EventLoopFuture<Void> {
-        
         return database.schema("seasons")
             .id()
             .field("name", .string, .required)
