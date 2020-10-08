@@ -20,6 +20,9 @@ final class Season: Model, Content {
     @Field(key: "soundTrackURL")
     var soundTrackURL: String
     
+    @Children(for: \.$season)
+    var enigmas: [Enigma]
+    
     init() { }
 
     init(id: UUID? = nil, name: String, theme: String, background: String, soundTrackURL: String) {

@@ -12,4 +12,5 @@ func routes(_ app: Application) throws {
 
     try app.register(collection: SeasonController())
     try app.register(collection: MidiaController())
+    try app.register(collection: EnigmaController())
 }

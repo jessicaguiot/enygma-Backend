@@ -14,6 +14,9 @@ final class Midia: Model, Content {
     @Field(key: "secondary")
     var secondary: String
     
+    @Children(for: \.$midia)
+    var enigmas: [Enigma]
+    
     init() { }
 
     init(id: UUID? = nil, main: String, secondary: String) {

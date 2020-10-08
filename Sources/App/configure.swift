@@ -16,6 +16,8 @@ public func configure(_ app: Application) throws {
 
     app.migrations.add(CreateSeason())
     app.migrations.add(CreateMidia())
+    app.migrations.add(CreateEnigma())
+    
     try app.autoMigrate().wait()
     //try app.autoRevert().wait()
     
