@@ -17,6 +17,20 @@ struct EnigmaController: RouteCollection {
             enigma.delete(use: delete)
         }
     }
+    
+    func getByCode(req: Request) throws -> EventLoopFuture<Enigma> {
+        return Enigma.find(req.parameters.get("enigmaID"), on: req.db).map { enigma }
+    }
+    
+    func getAllBySeason(req: Request) throws -> EventLoopFuture<[Enigma]> {
+       let enigma = Enigma..query(on: req.db)
+        .filter(\$.season_id == req.parameters.get(season_id))
+            .sort(by: \.$code)
+            .all()
+        
+        return enigma
+    }
+
 
     func index(req: Request) throws -> EventLoopFuture<[Enigma]> {
         return Enigma.query(on: req.db).all()
